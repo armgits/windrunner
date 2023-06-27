@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="windrunner">
+
+  <link name="base_link" />
+
+  <joint name="base_link_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+  </joint>
+
+  <link
+    name="chassis">
+    <inertial>
+      <origin
+        xyz="-0.0226488939817002 -4.07038644754473E-07 0.116500274977417"
+        rpy="0 0 0" />
+      <mass
+        value="16.2225130856696" />
+      <inertia
+        ixx="0.070077623686173"
+        ixy="-4.22972052044805E-07"
+        ixz="0.027170245241597"
+        iyy="0.822008708915092"
+        iyz="2.07720596332044E-07"
+        izz="0.83761002183723" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/chassis.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.894117647058823 0.831372549019608 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/chassis.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_steering">
+    <inertial>
+      <origin
+        xyz="0.000738629445632744 6.93889390390723E-18 0.0274186562455204"
+        rpy="0 0 0" />
+      <mass
+        value="0.775364793940127" />
+      <inertia
+        ixx="0.00173683701694801"
+        ixy="1.11879404801544E-20"
+        ixz="2.80278616327997E-05"
+        iyy="0.00173874624931406"
+        iyz="3.87926106565129E-19"
+        izz="0.0027765039468088" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/right_steering.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.419607843137255 0.533333333333333 0.419607843137255 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/right_steering.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.25503 -0.25399 0.1016"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="chassis" />
+    <child
+      link="right_steering" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.2618"
+      upper="0.2618"
+      effort="30"
+      velocity="100" />
+  </joint>
+  <link
+    name="front_right_wheel">
+    <inertial>
+      <origin
+        xyz="0.00102600126887337 1.38777878078145E-17 0.03808618281472"
+        rpy="0 0 0" />
+      <mass
+        value="1.09582331936177" />
+      <inertia
+        ixx="0.00493854676131426"
+        ixy="3.78811619008624E-20"
+        ixz="0.000104648573030942"
+        iyy="0.00493572764002721"
+        iyz="1.40618623110915E-18"
+        izz="0.00882038627025737" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/front_right_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/front_right_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="right_steering" />
+    <child
+      link="front_right_wheel" />
+    <axis
+      xyz="-0.0269291671620307 0 -0.999637344218372" />
+  </joint>
+  <link
+    name="left_steering">
+    <inertial>
+      <origin
+        xyz="0.000321385971484067 0 -0.0274267204533331"
+        rpy="0 0 0" />
+      <mass
+        value="0.775364793940128" />
+      <inertia
+        ixx="0.00173622492182973"
+        ixy="-6.39605928065253E-22"
+        ixz="-1.21988243233235E-05"
+        iyy="0.00173874624931406"
+        iyz="5.48647987200343E-23"
+        izz="0.00277711604192708" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/left_steering.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.419607843137255 0.533333333333333 0.419607843137255 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/left_steering.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.25445 0.254 0.1016"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="chassis" />
+    <child
+      link="left_steering" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.2618"
+      upper="0.2618"
+      effort="30"
+      velocity="100" />
+  </joint>
+  <link
+    name="front_left_wheel">
+    <inertial>
+      <origin
+        xyz="0.000446424680859869 0 -0.0380973844903337"
+        rpy="0 0 0" />
+      <mass
+        value="1.09582331936177" />
+      <inertia
+        ixx="0.00493626136111048"
+        ixy="-3.11301015052327E-35"
+        ixz="-4.55471621351588E-05"
+        iyy="0.0049357276400272"
+        iyz="-2.66564276559922E-35"
+        izz="0.00882267167046114" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/front_left_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/front_left_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="left_steering" />
+    <child
+      link="front_left_wheel" />
+    <axis
+      xyz="-0.0117171832246696 0 0.999931351452328" />
+  </joint>
+  <link
+    name="rear_right_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 0.0381"
+        rpy="0 0 0" />
+      <mass
+        value="1.09582331936177" />
+      <inertia
+        ixx="0.00493572764002721"
+        ixy="-3.14403027159358E-35"
+        ixz="-5.88986762197504E-35"
+        iyy="0.00493572764002721"
+        iyz="-2.62898406278081E-35"
+        izz="0.00882320539154442" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/rear_right_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/rear_right_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.254 -0.254 0.1016"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="chassis" />
+    <child
+      link="rear_right_wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="rear_left_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 -0.0381"
+        rpy="0 0 0" />
+      <mass
+        value="1.09582331936177" />
+      <inertia
+        ixx="0.00493572764002721"
+        ixy="-3.14403027159358E-35"
+        ixz="3.58806832101396E-35"
+        iyy="0.0049357276400272"
+        iyz="-2.62898406278081E-35"
+        izz="0.00882320539154442" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/rear_left_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://windrunner/meshes/rear_left_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.254 0.254 0.10159999836487"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="chassis" />
+    <child
+      link="rear_left_wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <transmission name="right_steering_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_steering_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_steering_actuator">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="left_steering_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_steering_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_steering_actuator">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="rear_right_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_right_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rear_right_wheel_actuator">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  
+  <transmission name="rear_left_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_left_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rear_left_wheel_actuator">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  
+</robot>

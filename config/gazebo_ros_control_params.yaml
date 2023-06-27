@@ -1,0 +1,6 @@
+windrunner:
+  right_steering_controller:
+     pid: {p: 50, i: 0.01, d: 7.5}
+  left_steering_controller:
+     pid: {p: 50, i: 0.01, d: 7.5}
+

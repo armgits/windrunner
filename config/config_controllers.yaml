@@ -1,0 +1,29 @@
+# Robot name goes here
+windrunner:
+  # default controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Controller 1
+  right_steering_controller:
+    type: effort_controllers/JointPositionController 
+    joint: right_steering_joint  
+
+  # Controller 2
+  left_steering_controller: 
+    type: effort_controllers/JointPositionController 
+    joint: left_steering_joint
+
+  # Controller 3
+  rear_right_wheel_controller:
+    type: velocity_controllers/JointVelocityController 
+    joint: rear_right_wheel_joint
+
+  # Controller 4
+  rear_left_wheel_controller:
+    type: velocity_controllers/JointVelocityController 
+    joint: rear_left_wheel_joint
+
+
+ 
