@@ -39,6 +39,7 @@ RUN apt update \
     ros-noetic-gazebo-ros-control \
     ros-noetic-joint-state-controller \
     ros-noetic-effort-controllers \
+    ros-noetic-velocity-controllers \
     ros-noetic-xacro \
     ros-noetic-robot-state-publisher \
     ros-noetic-joint-state-publisher \
