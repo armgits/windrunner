@@ -25,12 +25,12 @@ This is the easiest, most convenient way to run the project demo as an executabl
 
 Pull the Docker image of this project from Docker Hub.
 ```
-docker pull armdocks/justbot
+docker pull armdocks/windrunner
 ```
 
 Run the container for running the Gazebo simulation.
 ```
-docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix armdocks/justbot
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix armdocks/windrunner
 ```
 >**Tip:** The -it argument can be omitted from the above command for a less verbose, clean terminal output.
 

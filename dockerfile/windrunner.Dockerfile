@@ -81,4 +81,4 @@ RUN mkdir -p /home/$USERNAME/catkin_ws/src && cd /home/$USERNAME/catkin_ws/ \
 
 ENV DEBIAN_FRONTEND=
 
-CMD [ "/windrunner_teleop.sh" ]
+CMD [ "/windrunner_circle.sh" ]
