@@ -50,6 +50,16 @@ RUN apt update \
   && rosdep init \
   && rosdep update
 
+# gpu support
+RUN apt-get update \
+ && apt-get install -y -qq --no-install-recommends \
+  libglvnd0 \
+  libgl1 \
+  libglx0 \
+  libegl1 \
+  libxext6 \
+  libx11-6
+
 # copy scripts for workspace creation and package installation
 COPY windrunner_setup.sh /
 COPY windrunner_teleop.sh /
