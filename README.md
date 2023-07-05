@@ -3,6 +3,8 @@ Windrunner is a model car with Ackermann steering. This was an exercise on bring
 
 <p align="center"><img src="./image/windrunner.gif"></p>
 
+The above image is run at 2 times the actual simulation speed for demonstration purpose.
+
 ## Description of contents
 `cad/` consists of the Solidworks part and assembly files of the robot and tool plus Blender files of the same to export in DAE file format for the meshes.
 
