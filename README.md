@@ -1,22 +1,16 @@
-# Justbot
-Justbot is 7 degrees of freedom (6 DOF arm and 1 DOF tool) articulated manipulator designed based on the [DH parameters of the UR5e Cobot](https://www.universal-robots.com/articles/ur/application-installation/dh-parameters-for-calculations-of-kinematics-and-dynamics/#:~:text=0%2C%200%2C%20%2D0.02%5D-,UR5e,-Kinematics) from Universal Robots. This was my final project for the [ENPM662 (Introduction to Robot Modeling)](https://app.testudo.umd.edu/soc/search?courseId=ENPM662&sectionId=&termId=202308&_openSectionsOnly=on&creditCompare=&credits=&courseLevelFilter=ALL&instructor=&_facetoface=on&_blended=on&_online=on&courseStartCompare=&courseStartHour=&courseStartMin=&courseStartAM=&courseEndHour=&courseEndMin=&courseEndAM=&teachingCenter=ALL&_classDay1=on&_classDay2=on&_classDay3=on&_classDay4=on&_classDay5=on) course in the Fall 2022 semester.
+# Windrunner
+Windrunner is a model car with Ackermann steering. This was an exercise on bringing CAD models into a physics simulator like Gazebo and further integrating ROS controllers to operate the vehicle. This was my first project for the [ENPM662 (Introduction to Robot Modeling)](https://app.testudo.umd.edu/soc/search?courseId=ENPM662&sectionId=&termId=202308&_openSectionsOnly=on&creditCompare=&credits=&courseLevelFilter=ALL&instructor=&_facetoface=on&_blended=on&_online=on&courseStartCompare=&courseStartHour=&courseStartMin=&courseStartAM=&courseEndHour=&courseEndMin=&courseEndAM=&teachingCenter=ALL&_classDay1=on&_classDay2=on&_classDay3=on&_classDay4=on&_classDay5=on) course in the Fall 2022 semester.
 
-<p align="center"><img src="./image/justbot.gif"></p>
-
-[Full clip of the above demo](https://drive.google.com/file/d/1GjaewmEU0MJf0c27nm_vdGoYoIf93K8t/view)
-
-The robot is tasked the with removal of a laptop back cover by first unscrewing and then lifting the back cover.
+<p align="center"><img src="./image/windrunner.gif"></p>
 
 ## Description of contents
 `cad/` consists of the Solidworks part and assembly files of the robot and tool plus Blender files of the same to export in DAE file format for the meshes.
 
-`code/` consists of a Python file and Jupyter Notebooks for calculating forward kinematics and the Jacobian for inverse kinematics.
-
-`dockerfile/` consists of the necessary files to build the Docker image of this project. The image can then be used to run the container as an executable for simulating in Gazebo. Building the Docker image locally is not recommended, an up-to-date image is available on [Docker Hub](https://hub.docker.com/r/armdocks/justbot).
+`dockerfile/` consists of the necessary files to build the Docker image of this project. The image can then be used to run the container as an executable for simulating in Gazebo. Building the Docker image locally is not recommended, an up-to-date image is available on [Docker Hub](https://hub.docker.com/r/armdocks/windrunner).
 
 `image/` just consists of the GIF image used on the README page.
 
-`justbot/` and `justool/` are the ROS packages for the arm and tool respectively. Justbot package has the `move.py` file which is the Python node that computes the inverse kinematics and publishes the joint values.
+`windrunner/` is the ROS package for the Windrunner model car.
 
 ## Running the project
 This project can only run on Linux at the moment in two ways:
@@ -57,34 +51,49 @@ Assuming you have the catkin workspace setup,
 
 Clone the repository to `src/` folder of the target catkin workpace. Assuming this would be `~/catkin_ws/src/`,
 ```
-git clone https://github.com/armgits/justbot.git ~/catkin_ws/src/justbot_project
+git clone https://github.com/armgits/windrunner.git ~/catkin_ws/src/windrunner_project
 ```
-Make the Python files `start.py` and `move.py` in the `src/` folder of justbot package executable.
+Make the Python files `start.py` and `move.py` in the `src/` folder of windrunner package executable.
 ```
-sudo chmod +x ~/catkin_ws/src/justbot_project/justbot/src/move.py
-sudo chmod +x ~/catkin_ws/src/justbot_project/justbot/src/start.py
+sudo chmod +x ~/catkin_ws/src/windrunner_project/windrunner/src/windrunner_publisher.py
+sudo chmod +x ~/catkin_ws/src/windrunner_project/windrunner/src/windrunner_teleop.py
 ```
 Now you can build and source the packages.
 
 After a successful build, run the simulation in Gazebo. 
 
-This can be done in a single line using the shell script `justbot_execute.sh` from `dockerfile/` folder.
-```
-~/catkin_ws/src/justbot_project/dockerfile/justbot_execute.sh
-```
+This can be done in a single line using the shell script `windrunner_circle.sh` or `windrunner_teleop.sh` from `dockerfile/` folder.
 
+#### Demo for moving in a circular path (As seen in GIF)
+```
+~/catkin_ws/src/windrunner_project/dockerfile/windrunner_circle.sh
+```
+#### Teleoperation using keyboard input
+```
+~/catkin_ws/src/windrunner_project/dockerfile/windrunner_teleop.sh
+```
 Or manually,
 
 In first terminal initialize the ROS master.
 ```
 roscore
 ```
+#### Demo for moving in a circular path
 In a new, second terminal spawn the robot in Gazebo.
 ```
-roslaunch justbot justbot_gazebo.launch
+roslaunch windrunner windrunner_empty_world.launch
 ```
 In a new, third terminal run the node to perform the task.
 ```
-rosrun justbot move.py
+rosrun windrunner windrunner_publisher.py
+```
+#### For teleoperation using keyboard input
+In a new, second terminal spawn the robot in Gazebo.
+```
+roslaunch windrunner windrunner.launch
+```
+In a new, third terminal run the node to perform the task.
+```
+rosrun windrunner windrunner_teleop.py
 ```
 
