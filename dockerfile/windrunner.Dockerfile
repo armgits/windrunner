@@ -1,7 +1,4 @@
-##########################################
-# general stage
-##########################################
-FROM ubuntu:focal AS general
+FROM ubuntu:focal
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -83,26 +80,5 @@ RUN mkdir -p /home/$USERNAME/catkin_ws/src && cd /home/$USERNAME/catkin_ws/ \
   && /windrunner_setup.sh
 
 ENV DEBIAN_FRONTEND=
-
-CMD [ "/windrunner_circle.sh" ]
-
-##########################################
-# nvidia gpu support stage
-##########################################
-FROM general AS nvidia
-
-# nvidia gpu support
-RUN apt-get update \
- && apt-get install -y -qq --no-install-recommends \
-  libglvnd0 \
-  libgl1 \
-  libglx0 \
-  libegl1 \
-  libxext6 \
-  libx11-6
-
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
-ENV QT_X11_NO_MITSHM 1
 
 CMD [ "/windrunner_circle.sh" ]
